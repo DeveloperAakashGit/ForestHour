@@ -564,3 +564,44 @@ body {
   .cloud, .pollen, .leaf img, .sunlight, .cclock { animation: none !important; }
 }
 
+/* Site title / header */
+.site-header{
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  text-align: center;
+  width: auto;
+}
+.site-title{
+  font-family: 'Satisfy', var(--font-fa);
+  font-size: 34px;
+  line-height: 1;
+  color: rgb(239, 207, 142);
+  background: linear-gradient(90deg,#c6f0b4,#fff7d2,#bfe8ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 0 3px 8px rgba(6, 22, 8, 0.25);
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px) saturate(1.1);
+  animation-name: site-titleanime;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  
+}
+@keyframes site-titleanime {
+  50%{
+      transform: translateX(10px)
+  };
+  100%{
+    transform: translateX(40px);
+  }
+}
+@media (max-width: 480px){
+  .site-title{ font-size: 22px; }
+}
+
