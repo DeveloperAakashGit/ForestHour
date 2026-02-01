@@ -138,6 +138,11 @@ Used contrast control, soft shadows, and scale hierarchy so the clock remains re
 
 ---
 
+## Preview of website
+
+![Forest Hour Preview](assets/demo.png)
+
+
 ## 🧩 Conclusion
 
 **Forest Hour** demonstrates how thoughtful design and clean code can create immersive experiences using only core web technologies.

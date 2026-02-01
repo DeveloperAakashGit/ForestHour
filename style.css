@@ -579,9 +579,26 @@ body {
   font-family: 'Satisfy', var(--font-fa);
   font-size: 34px;
   line-height: 1;
-  color: rgb(239, 207, 142);
+  color: rgb(239, 248, 235);
   background: linear-gradient(90deg,#c6f0b4,#fff7d2,#bfe8ff);
   -webkit-background-clip: text;
+
+/* Title wrap & animated SVG border */
+.title-wrap{ position: relative; display: inline-block; padding: 0 6px; }
+.title-border{ position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: calc(100% + 36px); height: calc(100% + 20px); pointer-events: none; z-index: 5; overflow: visible; }
+.title-border rect{ stroke-dasharray: 420; stroke-dashoffset: 420; animation: dash-move 3.8s linear infinite; opacity: 0.95; }
+
+@keyframes dash-move{
+  0%{ stroke-dashoffset: 420; }
+  100%{ stroke-dashoffset: 0; }
+}
+
+/* subtle pulse of the border to match background */
+.title-border{ filter: drop-shadow(0 6px 12px rgba(12,30,12,0.08)); }
+
+@media (prefers-reduced-motion: reduce){
+  .title-border rect{ animation: none; stroke-dashoffset: 0; }
+}
   background-clip: text;
   text-shadow: 0 3px 8px rgba(6, 22, 8, 0.25);
   letter-spacing: 1px;
