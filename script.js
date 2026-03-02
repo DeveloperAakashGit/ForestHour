@@ -216,21 +216,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize interactivity after assets ready
     async function init() {
-        const [imgResults, audioResult] = await waitForAssets();
+        await waitForAssets();
         // hide preloader
         if (preloader) preloader.style.display = 'none';
         // Setup audio handlers
         setupAudioVisiblityHandler();
         enableAudioOnInteraction();
-
-        // if audio has buffered enough, start playback automatically
-        if (audio && audioResult && audioResult.status === 'ok') {
-            // unmute only when user has interacted, autoplay may still be blocked
-            audio.play().catch(() => {
-                // will wait for interaction or toggle button
-            });
-        }
-
         // start clock
         animateClock();
     }
