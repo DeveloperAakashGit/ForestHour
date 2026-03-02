@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forest Hour</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preload" href="assets/backCover.png" as="image">
     <link rel="preload" href="assets/clock.svg" as="image">
     <link rel="preload" href="assets/daybg.svg" as="image">
     <link rel="preload" href="assets/leaf.png" as="image">
+    <link rel="preload" href="assets/ReelAudio-5307.mp3" as="audio">
+    <link rel="shortcut icon" href="assets/clock.svg" type="image/x-icon">
 </head>
 <body style="background-color: black;">
-    <header class="site-header" aria-hidden="false">
-        <h1 class="site-title">ForestHour</h1>
-    </header>
+    <!-- Preloader overlay: shown until images/audio are ready -->
+    <div id="preloader" aria-hidden="false">
+        <div class="preloader-inner">
+            <div class="spinner"></div>
+            <div class="preloader-text">Loading assets…</div>
+        </div>
+    </div>
+    
+    <!-- Background audio (load manually to avoid streaming during initial render) -->
+    <audio id="bg-audio" preload="none" loop muted>
+        <source src="assets/ReelAudio-5307.mp3" type="audio/mpeg">
+    </audio>
+    
+ 
 <div class="container">
     <div class="backcover"></div>
     <!-- Visual effects: sunlight and wind (pure CSS) -->
@@ -50,6 +63,7 @@
             <div class="date month">12</div>
             <div class="dspt">-</div>
             <div class="date year">2000</div>
+            <div class="ampm">AM</div>
             <img class="daybg"src="assets/daybg.svg" alt="">
             </div>
             <div class="number">
@@ -69,14 +83,10 @@
         </div>
         <img  class="clkbg" src="assets/clock.svg" alt="clock">
     </div>
-    <div class="ctimer">
-        <div class="timer-display">
-            <span class="timer-label">Timer</span>
-        </div>
-    </div>
+    <!-- App name displayed under clock center -->
+    <div class="app-name">ForestHour</div>
 </div>
 </div>
-
     <div class="leaves">
         <div class="leaf leaf1"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
         <div class="leaf leaf2"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
