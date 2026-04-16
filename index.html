@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Hour</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="assets/backCover.png" as="image">
+    <link rel="preload" href="assets/clock.svg" as="image">
+    <link rel="preload" href="assets/daybg.svg" as="image">
+    <link rel="preload" href="assets/leaf.png" as="image">
+    <link rel="preload" href="assets/ReelAudio-5307.mp3" as="audio">
+    <link rel="shortcut icon" href="assets/clock.svg" type="image/x-icon">
+</head>
+<body style="background-color: black;">
+    <!-- Preloader overlay: shown until images/audio are ready -->
+    <div id="preloader" aria-hidden="false">
+        <!-- Forest bg layer -->
+        <div class="pl-bg"></div>
+        <!-- Light beams fanning from top -->
+        <div class="pl-beams">
+            <div class="pl-beam" style="--a:-16deg;--l:36%;--w:80px;--del:0s"></div>
+            <div class="pl-beam" style="--a:-7deg;--l:43%;--w:120px;--del:0.4s"></div>
+            <div class="pl-beam" style="--a:0deg;--l:50%;--w:150px;--del:0.8s"></div>
+            <div class="pl-beam" style="--a:8deg;--l:57%;--w:115px;--del:0.4s"></div>
+            <div class="pl-beam" style="--a:17deg;--l:64%;--w:75px;--del:0s"></div>
+        </div>
+        <div class="pl-particles" id="pl-particles"></div>
+        <div class="pl-mist"></div>
+        <div class="pl-content">
+            <div class="pl-clock-wrap">
+                <svg class="pl-clock-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="plglow">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b"/>
+                            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                        <radialGradient id="plface" cx="38%" cy="32%">
+                            <stop offset="0%" stop-color="rgba(18,45,18,0.95)"/>
+                            <stop offset="100%" stop-color="rgba(3,9,4,0.98)"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="100" cy="100" r="96" fill="none" stroke="rgba(100,210,50,0.07)" stroke-width="16" class="pl-ambient-ring"/>
+                    <circle cx="100" cy="100" r="84" fill="url(#plface)" stroke="rgba(195,235,135,0.8)" stroke-width="2.5" class="pl-face-draw"/>
+                    <circle cx="100" cy="100" r="76" fill="none" stroke="rgba(140,200,80,0.12)" stroke-width="1"/>
+                    <circle cx="100" cy="100" r="84" fill="none" stroke="rgba(130,230,70,0.75)" stroke-width="3.5" stroke-dasharray="55 474" stroke-linecap="round" class="pl-arc-spin"/>
+                    <line x1="100" y1="18" x2="100" y2="33" stroke="rgba(200,245,150,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="182" y1="100" x2="167" y2="100" stroke="rgba(200,245,150,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="100" y1="182" x2="100" y2="167" stroke="rgba(200,245,150,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="18" y1="100" x2="33" y2="100" stroke="rgba(200,245,150,0.9)" stroke-width="3" stroke-linecap="round"/>
+                    <g opacity="0.45" stroke="rgba(175,225,120,1)" stroke-width="1.5" stroke-linecap="round">
+                        <line x1="145" y1="21" x2="139" y2="34"/><line x1="179" y1="55" x2="166" y2="61"/>
+                        <line x1="179" y1="145" x2="166" y2="139"/><line x1="145" y1="179" x2="139" y2="166"/>
+                        <line x1="55" y1="179" x2="61" y2="166"/><line x1="21" y1="145" x2="34" y2="139"/>
+                        <line x1="21" y1="55" x2="34" y2="61"/><line x1="55" y1="21" x2="61" y2="34"/>
+                    </g>
+                    <!-- Hour hand -->
+                    <line x1="100" y1="100" x2="100" y2="58" stroke="rgba(120,195,155,1)" stroke-width="5.5" stroke-linecap="round" class="pl-hh" filter="url(#plglow)"/>
+                    <!-- Minute hand -->
+                    <line x1="100" y1="100" x2="100" y2="26" stroke="rgba(245,205,80,1)" stroke-width="3" stroke-linecap="round" class="pl-mh" filter="url(#plglow)"/>
+                    <!-- Second hand -->
+                    <line x1="100" y1="112" x2="100" y2="20" stroke="rgba(170,255,110,0.9)" stroke-width="1.5" stroke-linecap="round" class="pl-sh"/>
+                    <!-- Center pivot -->
+                    <circle cx="100" cy="100" r="6" fill="rgba(90,175,55,1)" filter="url(#plglow)"/>
+                    <circle cx="100" cy="100" r="2.5" fill="rgba(235,255,200,1)"/>
+                </svg>
+            </div>
+            <!-- Brand -->
+            <h1 class="pl-brand">
+                <span class="pl-ch" style="--ci:0">F</span><span class="pl-ch" style="--ci:1">o</span><span class="pl-ch" style="--ci:2">r</span><span class="pl-ch" style="--ci:3">e</span><span class="pl-ch" style="--ci:4">s</span><span class="pl-ch" style="--ci:5">t</span><span class="pl-sp"> </span><span class="pl-ch" style="--ci:6">H</span><span class="pl-ch" style="--ci:7">o</span><span class="pl-ch" style="--ci:8">u</span><span class="pl-ch" style="--ci:9">r</span>
+            </h1>
+            <!-- Progress -->
+            <div class="pl-progress-wrap">
+                <div class="pl-progress-bar"><div class="pl-progress-fill" id="pl-fill"></div></div>
+                <p class="pl-msg" id="pl-status">Awakening the forest…</p>
+            </div>
+            <!-- Enter button -->
+            <button id="start-btn" class="pl-enter-btn" style="display:none">
+                <span class="pl-leaf-icon">🌿</span><span>Enter the Forest</span>
+            </button>
+        </div>
+    </div>
+
+    
+    <audio id="bg-audio" preload="auto" loop>
+        <source src="assets/ReelAudio-5307.mp3" type="audio/mpeg">
+    </audio>
+    
+
+    <header class="site-header-bar-c">
+        <div class="site-header-bar">
+            <div class="shb-left">
+            <span class="shb-leaf">🌿</span>
+            <span class="shb-name">ForestHour</span>
+        </div>
+        <nav class="shb-nav">
+            <a class="shb-link" href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+                <span>GitHub</span>
+            </a>
+            <a class="shb-link" href="#" title="About">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>About</span>
+            </a>
+        </nav>
+        </div>
+    </header>
+
+ 
+<div class="container">
+    <div class="backcover"></div>
+    <div class="effects">
+        <div class="sunlight"></div>
+        <div class="wind-layer" aria-hidden="true">
+            <span class="gust gust1"></span>
+            <span class="gust gust2"></span>
+            <span class="gust gust3"></span>
+            <span class="gust gust4"></span>
+            <span class="gust gust5"></span>
+        </div>
+    </div>
+    <div class="sky">
+        <div class="pollen-container" aria-hidden="true">
+            <span class="pollen p1"></span>
+            <span class="pollen p2"></span>
+            <span class="pollen p3"></span>
+            <span class="pollen p4"></span>
+            <span class="pollen p5"></span>
+        </div>
+    </div>
+    <div class="cclock">
+    <div class="clock">
+        <div class="clk">
+            <div class="hand hour"></div>
+            <div class="hand minute"></div>
+            <div class="hand second"></div>
+            <div class="pulley"><div class="innerpulley"></div></div>
+            <div class="dayc" id="dayc-wrap">
+            <div class="date day">10</div>
+            <div class="dspt date-sep">-</div>
+            <div class="date month">12</div>
+            <div class="dspt date-sep">-</div>
+            <div class="date year">2000</div>
+            <div class="ampm">AM</div>
+            <img class="daybg" src="assets/daybg.svg" alt="">
+            </div>
+            <!-- Day name -->
+            <div class="dayname-display" id="dayname-display" style="display:none">Wednesday</div>
+            <div class="number">
+            <div class="timeno" style="--i:1"><b>1</b></div>
+            <div class="timeno" style="--i:2"><b>2</b></div>
+            <div class="timeno" style="--i:3"><b>3</b></div>
+            <div class="timeno" style="--i:4"><b>4</b></div>
+            <div class="timeno" style="--i:5"><b>5</b></div>
+            <div class="timeno" style="--i:6"><b>6</b></div>
+            <div class="timeno" style="--i:7"><b>7</b></div>
+            <div class="timeno" style="--i:8"><b>8</b></div>
+            <div class="timeno" style="--i:9"><b>9</b></div>
+            <div class="timeno" style="--i:10"><b>10</b></div>
+            <div class="timeno" style="--i:11"><b>11</b></div>
+            <div class="timeno" style="--i:12"><b>12</b></div>
+        </div>
+        </div>
+        <img class="clkbg" src="assets/clock.svg" alt="clock">
+    </div>
+    <div class="app-name">ForestHour</div>
+</div>
+</div>
+    <div class="leaves">
+        <div class="leaf leaf1"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf2"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf3"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf4"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf5"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf6"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf7"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf8"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf9"><img src="assets/leaf.png" alt="#" style="height: 40px;"></div>
+        <div class="leaf leaf10"><img src="assets/leaf.png" alt="#" style="height:40px;"></div>
+    </div>
+
+    <!-- Bottom Controls -->
+    <div class="audio-controls-bottom">
+        <button id="day-toggle-btn" class="forest-btn" aria-label="Toggle Day Name">
+            <span class="forest-btn-icon">📅</span>
+            <span class="forest-btn-text" id="day-btn-label">Day Name</span>
+        </button>
+        <button id="main-audio-toggle" class="forest-btn" aria-label="Toggle Background Music">
+            <span class="forest-btn-icon" id="main-audio-icon">⏸</span>
+            <span class="forest-btn-text">Ambient Sound</span>
+        </button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
