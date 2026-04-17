@@ -139,8 +139,9 @@ Used contrast control, soft shadows, and scale hierarchy so the clock remains re
 ---
 
 ## Preview of website
+![Forest Hour Loading Preview](assets/loadingDemo.png)
 
-![Forest Hour Preview](assets/demo.png)
+![Forest Hour Home Preview](assets/websiteDemo.png)
 
 ## Link of project :deployed in git 
 ```https://developeraakashgit.github.io/ForestHour/```
