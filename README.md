@@ -111,11 +111,11 @@ Used contrast control, soft shadows, and scale hierarchy so the clock remains re
 
 ---
 
-## ? Responsiveness
+## ? Compatibility
 
-* Layout adapts to different screen sizes
-* Clock maintains aspect ratio and alignment
-* Visual elements scale without distortion
+* Designed for desktop viewing only
+* Not optimized for mobile or small-screen devices
+* Best experienced in a desktop browser at standard resolutions
 
 ---
 
