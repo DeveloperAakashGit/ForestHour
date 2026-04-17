@@ -1001,9 +1001,7 @@ body {
 .pl-bg {
   position: absolute;
   inset: 0;
-  background-image: url('assets/backCover.png');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
   animation: pl-bg-breathe 10s ease-in-out infinite alternate;
 }
 
