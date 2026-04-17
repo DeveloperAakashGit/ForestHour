@@ -1862,257 +1862,165 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  .site-title {
-    font-size: 22px;
-  }
-}
+/* ═══════════════════════════════════════════════════════
+   COMPLETE RESPONSIVE SYSTEM — Three breakpoints
+   ═══════════════════════════════════════════════════════ */
 
-/* ═══════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ═══════════════════════════════ */
-
-/* ── Tablet & small desktop (≤ 768px) ── */
-@media (max-width: 768px) {
-
-  /* Header pill narrows */
+/* ──────────────────────────────────────────────────────
+   TABLET / LARGE PHONE  (≤ 700px)
+   Handles landscape phones and small tablets
+   ────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  /* Header pill: shrinks without breaking */
   .site-header-bar {
-    width: clamp(280px, 86vw, 500px);
-    padding: 0 16px;
-    gap: 12px;
+    width: clamp(300px, calc(100vw - 24px), 560px);
     height: 44px;
+    padding: 0 16px;
+    gap: 10px;
   }
+  .shb-name { font-size: 18px; }
+  .shb-leaf  { font-size: 18px; }
+  .shb-link  { padding: 6px 12px; font-size: 11px; }
 
-  .shb-name {
-    font-size: 18px;
-  }
+  /* Clock: ~0.81× desktop */
+  .cclock  { top: -30px; }
+  .clock   { width: 218px; height: 218px; }
+  .clkbg   { height: 218px; }
+  .clk     { width: 185px; height: 185px; top: 18px; }
+  .second  { height: 77px; margin-top: -77px; }
+  .minute  { height: 57px; margin-top: -57px; }
+  .hour    { height: 46px; margin-top: -46px; }
+  .number  { width: 185px; height: 185px; }
+  .timeno  { font-size: 12px; }
+  .app-name { font-size: 22px; top: calc(60% + 112px); }
 
-  .shb-leaf {
-    font-size: 18px;
-  }
-
-  .shb-link {
-    padding: 5px 10px;
-    font-size: 11px;
-  }
-
-  /* Container */
-  .container {
-    width: 100vw;
-    padding: 0;
-  }
-
-  /* Clock area */
-  .cclock {
-    top: -30px;
-    width: 340px;
-    height: 340px;
-  }
-
-  .clock {
-    height: 210px;
-    width: 210px;
-  }
-
-  .clkbg {
-    height: 210px;
-  }
-
-  .clk {
-    width: 178px;
-    height: 178px;
-    top: 18px;
-  }
-
-  /* Hands */
-  .second {
-    height: 75px;
-    margin-top: -75px;
-  }
-
-  .minute {
-    height: 56px;
-    margin-top: -56px;
-  }
-
-  .hour {
-    height: 45px;
-    margin-top: -45px;
-  }
-
-  /* Number ring */
-  .number {
-    width: 178px;
-    height: 178px;
-  }
-
-  .timeno {
-    font-size: 12px;
-  }
-
-  /* App name */
-  .app-name {
-    font-size: 22px;
-    top: calc(60% + 110px);
-  }
-
-  /* Bottom controls */
+  /* Bottom buttons: wrap in a row, never overflow viewport */
   .audio-controls-bottom {
-    bottom: 18px;
+    bottom: 20px;
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
-    width: 90vw;
+    max-width: calc(100vw - 24px);
   }
+  .forest-btn       { padding: 10px 20px; font-size: 11px; letter-spacing: 1.5px; }
+  .forest-btn-icon  { font-size: 14px; }
 
-  .forest-btn {
-    padding: 10px 18px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-  }
-
-  .forest-btn-icon {
-    font-size: 14px;
-  }
-
-  /* Leaves — reduce count shown */
-  .leaf7,
-  .leaf8,
-  .leaf9,
-  .leaf10 {
-    display: none;
-  }
-
-  /* Preloader clock */
-  .pl-clock-wrap {
-    width: 150px;
-    height: 150px;
-  }
-
-  .pl-brand {
-    font-size: 34px;
-  }
-
-  .pl-progress-wrap {
-    width: 180px;
-  }
-
-  .pl-enter-btn {
-    padding: 13px 28px;
-    font-size: 13px;
-  }
-}
-
-/* ── Mobile (≤ 420px) ── */
-@media (max-width: 420px) {
-
-  /* Header: hide nav text, show only icons */
-  .shb-name {
-    font-size: 15px;
-  }
-
-  .shb-link span {
-    display: none;
-  }
-
-  .shb-link {
-    padding: 6px 10px;
-    gap: 0;
-  }
-
-  .site-header-bar {
-    width: 88vw;
-    height: 40px;
-    padding: 0 12px;
-  }
-
-  /* Clock */
-  .cclock {
-    width: 290px;
-    height: 290px;
-    top: -20px;
-  }
-
-  .clock {
-    height: 185px;
-    width: 185px;
-  }
-
-  .clkbg {
-    height: 185px;
-  }
-
-  .clk {
-    width: 157px;
-    height: 157px;
-    top: 16px;
-  }
-
-  .second {
-    height: 66px;
-    margin-top: -66px;
-  }
-
-  .minute {
-    height: 50px;
-    margin-top: -50px;
-  }
-
-  .hour {
-    height: 40px;
-    margin-top: -40px;
-  }
-
-  .number {
-    width: 157px;
-    height: 157px;
-  }
-
-  .timeno {
-    font-size: 10px;
-  }
-
-  .app-name {
-    font-size: 18px;
-    top: calc(60% + 95px);
-  }
-
-  /* Buttons stack vertically */
-  .audio-controls-bottom {
-    flex-direction: column;
-    gap: 6px;
-    bottom: 14px;
-  }
-
-  .forest-btn {
-    width: 72vw;
-    justify-content: center;
-    padding: 10px 14px;
-  }
+  /* Remove extra falling leaves (performance) */
+  .leaf7, .leaf8, .leaf9, .leaf10 { display: none; }
 
   /* Preloader */
-  .pl-clock-wrap {
-    width: 130px;
-    height: 130px;
+  .pl-content       { gap: 18px; padding: 24px 20px; }
+  .pl-clock-wrap    { width: 155px; height: 155px; }
+  .pl-brand         { font-size: clamp(28px, 7vw, 44px); letter-spacing: clamp(2px, 0.8vw, 4px); }
+  .pl-progress-wrap { width: min(220px, 80vw); }
+  .pl-enter-btn     { padding: 13px 30px; font-size: 13px; }
+}
+
+/* ──────────────────────────────────────────────────────
+   STANDARD MOBILE  (≤ 480px)
+   Covers most Android & iPhone portrait screens
+   ────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Header: tighter pill, still readable */
+  .site-header-bar {
+    width: calc(100vw - 20px);
+    height: 42px;
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .shb-name { font-size: 16px; letter-spacing: 1px; }
+  .shb-leaf  { font-size: 16px; }
+  .shb-link  { padding: 6px 10px; font-size: 10px; letter-spacing: 1px; }
+
+  /* Clock: ~0.76× desktop — fits all 390px+ phones */
+  .cclock  { top: -20px; }
+  .clock   { width: 205px; height: 205px; }
+  .clkbg   { height: 205px; }
+  .clk     { width: 174px; height: 174px; top: 17px; }
+  .second  { height: 72px; margin-top: -72px; }
+  .minute  { height: 54px; margin-top: -54px; }
+  .hour    { height: 43px; margin-top: -43px; }
+  .number  { width: 174px; height: 174px; }
+  .timeno  { font-size: 11px; }
+  .app-name { font-size: 19px; top: calc(60% + 105px); }
+
+  /* Pulley: stays centred at the scaled clock */
+  .pulley      { top: 49%; left: 50%; }
+  .innerpulley { top: 49%; left: 50%; }
+
+  /* Day-name badge */
+  .dayname-display { font-size: 10px; padding: 2px 6px; }
+
+  /* Buttons: stack vertically for easy thumb reach */
+  .audio-controls-bottom {
+    flex-direction: column;
+    bottom: 16px;
+    gap: 7px;
+    width: min(280px, 78vw);
+  }
+  .forest-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
   }
 
-  .pl-brand {
-    font-size: 28px;
+  /* Hide most leaves on mobile */
+  .leaf5, .leaf6, .leaf7, .leaf8, .leaf9, .leaf10 { display: none; }
+
+  /* Preloader */
+  .pl-content       { gap: 16px; padding: 20px 16px; }
+  .pl-clock-wrap    { width: min(140px, 36vw); height: min(140px, 36vw); }
+  .pl-brand         { font-size: clamp(24px, 6.5vw, 34px); letter-spacing: clamp(1px, 0.5vw, 3px); }
+  .pl-progress-wrap { width: min(200px, 84vw); }
+  .pl-enter-btn {
+    width: min(260px, 80vw);
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 12px;
     letter-spacing: 2px;
   }
+  .pl-msg { font-size: 9px; letter-spacing: 2px; }
+}
 
-  .pl-progress-wrap {
-    width: 88vw;
-  }
-
-  .pl-enter-btn {
-    width: 80vw;
+/* ──────────────────────────────────────────────────────
+   SMALL PHONE  (≤ 380px)
+   Galaxy A-series, older iPhones, budget Android
+   ────────────────────────────────────────────────────── */
+@media (max-width: 380px) {
+  /* Header: icon-only nav — save precious width */
+  .shb-link span { display: none; }
+  .shb-link {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     justify-content: center;
-    font-size: 13px;
+    gap: 0;
   }
+  .site-header-bar { height: 38px; padding: 0 10px; width: calc(100vw - 16px); }
+  .shb-name { font-size: 14px; }
+  .shb-leaf  { font-size: 14px; }
 
-  .pl-content {
-    gap: 16px;
-    padding: 20px;
-  }
+  /* Clock: ~0.67× desktop */
+  .clock   { width: 182px; height: 182px; }
+  .clkbg   { height: 182px; }
+  .clk     { width: 154px; height: 154px; top: 15px; }
+  .second  { height: 64px; margin-top: -64px; }
+  .minute  { height: 47px; margin-top: -47px; }
+  .hour    { height: 38px; margin-top: -38px; }
+  .number  { width: 154px; height: 154px; }
+  .timeno  { font-size: 9.5px; }
+  .app-name { font-size: 16px; top: calc(60% + 93px); }
+
+  /* Buttons: tighter */
+  .audio-controls-bottom { width: min(250px, 84vw); bottom: 12px; }
+  .forest-btn            { padding: 10px 14px; font-size: 10px; }
+
+  /* Preloader */
+  .pl-clock-wrap { width: 32vw; height: 32vw; }
+  .pl-brand      { font-size: clamp(20px, 7vw, 28px); letter-spacing: 1px; }
+  .pl-content    { gap: 14px; padding: 16px 12px; }
+  .pl-enter-btn  { font-size: 11px; padding: 11px 16px; width: min(240px, 86vw); justify-content: center; }
 }
